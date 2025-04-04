@@ -1,0 +1,226 @@
+import React, { useState } from 'react';
+
+const Signup = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    mathLevel: '',
+    terms: false
+  });
+
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match. Please try again.');
+      return;
+    }
+    
+    // Form is valid - would typically submit to server here
+    alert('Account created successfully! Welcome to HectoClash.');
+    
+    // You would typically redirect to a dashboard or login page
+    // window.location.href = 'dashboard.html';
+  };
+
+  return (
+    <div className="bg-[#05111d] text-white min-h-screen flex flex-col">
+      {/* Navigation Bar */}
+      <nav className="flex justify-between items-center p-5 bg-[#05111d]/95 sticky top-0 z-10 shadow-lg backdrop-blur-md flex-col md:flex-row gap-5 md:gap-0">
+        <a href="/" className="bg-gradient-to-br from-[#EE964B] to-[#F95738] w-12 h-12 rounded-full flex justify-center items-center font-bold text-lg shadow-md shadow-[#F95738]/50 text-white no-underline">
+          HC
+        </a>
+        <ul className="flex list-none w-full md:w-auto justify-between md:justify-start">
+          <li className="md:mx-5"><a href="/" className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text">Home</a></li>
+          <li className="md:mx-5"><a href="#" className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text">Features</a></li>
+          <li className="md:mx-5"><a href="#" className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text">About</a></li>
+          <li className="md:mx-5"><a href="#" className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text">Contact</a></li>
+        </ul>
+        <a href="/login" className="bg-gradient-to-br from-[#EE964B] to-[#F95738] text-white border-none py-3 px-7 rounded-md font-bold cursor-pointer transition-all duration-300 text-base tracking-wider shadow-md shadow-[#F95738]/30 no-underline hover:translate-y-[-3px] hover:scale-105 hover:shadow-lg hover:shadow-[#F95738]/50">
+          Login
+        </a>
+      </nav>
+      
+      {/* Animated Background Waves */}
+      <div className="absolute top-0 right-0 w-full h-full z-0 overflow-hidden opacity-15">
+        <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#F95738] rounded-[45%_47%_43%_42%] animate-[rotate_15s_linear_infinite]"></div>
+        <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#EE964B] rounded-[47%_43%_51%_45%] animate-[rotate_25s_linear_infinite]"></div>
+        <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#f8e8ba] rounded-[42%_46%_39%_45%] animate-[rotate_35s_linear_infinite]"></div>
+      </div>
+      
+      {/* Main Content */}
+      <div className="flex-1 flex items-center justify-center p-5 md:p-8 relative z-1">
+        <div className="flex max-w-[900px] w-full gap-5 items-start flex-col lg:flex-row">
+          {/* Signup Card */}
+          <div className="bg-[#081c30]/70 border border-white/10 rounded-xl p-8 flex-1 shadow-xl backdrop-blur-md">
+            <div className="text-center mb-6">
+              <h1 className="text-4xl mb-2.5 text-white shadow-md">
+                Join Hecto<span className="bg-gradient-to-br from-[#F4D35E] to-[#F95738] bg-clip-text text-transparent">Clash</span>
+              </h1>
+              <p className="text-[#f8e8ba] text-lg opacity-90">Begin your journey to mathematical excellence</p>
+            </div>
+            
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col gap-1.5 flex-1">
+                  <label htmlFor="firstName" className="text-[#f8e8ba] font-medium text-sm">First Name</label>
+                  <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    required 
+                    className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5 flex-1">
+                  <label htmlFor="lastName" className="text-[#f8e8ba] font-medium text-sm">Last Name</label>
+                  <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    required 
+                    className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+              
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="email" className="text-[#f8e8ba] font-medium text-sm">Email Address</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="password" className="text-[#f8e8ba] font-medium text-sm">Password</label>
+                <input 
+                  type="password" 
+                  id="password" 
+                  name="password" 
+                  required 
+                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </div>
+              
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="confirmPassword" className="text-[#f8e8ba] font-medium text-sm">Confirm Password</label>
+                <input 
+                  type="password" 
+                  id="confirmPassword" 
+                  name="confirmPassword" 
+                  required 
+                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                />
+              </div>
+              
+              {error && <div className="text-red-500 text-sm">{error}</div>}
+              
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="mathLevel" className="text-[#f8e8ba] font-medium text-sm">Your Math Proficiency Level</label>
+                <select 
+                  id="mathLevel" 
+                  name="mathLevel" 
+                  required 
+                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)] cursor-pointer"
+                  value={formData.mathLevel}
+                  onChange={handleChange}
+                >
+                  <option value="" disabled>Select your level</option>
+                  <option value="beginner">Beginner - Looking to build foundations</option>
+                  <option value="intermediate">Intermediate - Comfortable with various concepts</option>
+                  <option value="advanced">Advanced - Seeking to refine advanced skills</option>
+                  <option value="expert">Expert - Ready for the toughest challenges</option>
+                </select>
+              </div>
+              
+              <div className="flex items-start gap-2.5 my-2.5">
+                <input 
+                  type="checkbox" 
+                  id="terms" 
+                  name="terms" 
+                  required 
+                  className="mt-1.5 accent-[#F95738] w-4 h-4"
+                  checked={formData.terms}
+                  onChange={handleChange}
+                />
+                <label htmlFor="terms" className="text-sm text-white/80 leading-relaxed">
+                  I agree to the <a href="#" className="text-[#EE964B] no-underline transition-colors duration-300 hover:text-[#F95738] hover:underline">Terms of Service</a> and <a href="#" className="text-[#EE964B] no-underline transition-colors duration-300 hover:text-[#F95738] hover:underline">Privacy Policy</a>. I understand that my data will be used as described in the Privacy Policy.
+                </label>
+              </div>
+              
+              <button 
+                type="submit" 
+                className="bg-gradient-to-br from-[#EE964B] to-[#F95738] text-white border-none py-3.5 rounded-lg font-bold text-lg cursor-pointer transition-all duration-300 mt-2.5 shadow-lg shadow-[#F95738]/30 hover:translate-y-[-3px] hover:shadow-xl hover:shadow-[#F95738]/40"
+              >
+                Create Account
+              </button>
+              
+              <div className="text-center mt-5 text-white/70 text-sm">
+                Already have an account? <a href="/Signin" className="text-[#f8e8ba] no-underline font-medium transition-colors duration-300 hover:text-[#F95738]">Log in</a>
+              </div>
+            </form>
+          </div>
+          
+          {/* Benefits Card */}
+          <div className="bg-[#081c30]/70 border border-white/10 rounded-xl p-8 w-full lg:w-[280px] shadow-xl backdrop-blur-md lg:sticky lg:top-[100px]">
+            <div>
+              <div className="flex justify-center mb-4">
+                <span className="bg-gradient-to-br from-[#EE964B] to-[#F95738] w-12 h-12 rounded-full flex justify-center items-center font-bold text-2xl shadow-md shadow-[#F95738]/50">🏆</span>
+              </div>
+              <h3 className="text-[#f8e8ba] text-lg mb-3 text-center">Benefits of joining HectoClash:</h3>
+              <ul className="flex flex-col gap-3 list-none">
+                <li className="flex items-start gap-2.5 text-sm text-white/80 before:content-['✓'] before:text-[#F95738] before:font-bold">Access to daily mental math challenges</li>
+                <li className="flex items-start gap-2.5 text-sm text-white/80 before:content-['✓'] before:text-[#F95738] before:font-bold">Track your progress with advanced analytics</li>
+                <li className="flex items-start gap-2.5 text-sm text-white/80 before:content-['✓'] before:text-[#F95738] before:font-bold">Compete in global tournaments with real prizes</li>
+                <li className="flex items-start gap-2.5 text-sm text-white/80 before:content-['✓'] before:text-[#F95738] before:font-bold">Connect with a community of math enthusiasts</li>
+                <li className="flex items-start gap-2.5 text-sm text-white/80 before:content-['✓'] before:text-[#F95738] before:font-bold">Personalized learning path based on your skill level</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Footer */}
+      <footer className="p-8 bg-[#05111d] text-center border-t border-white/5">
+        <div className="flex flex-col gap-4 max-w-6xl mx-auto">
+          <div className="flex justify-center gap-8 mb-2.5">
+            <a href="#" className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]">Privacy Policy</a>
+            <a href="#" className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]">Terms of Service</a>
+            <a href="#" className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]">FAQ</a>
+            <a href="#" className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]">Support</a>
+          </div>
+          <p className="text-white/50 text-sm">© 2025 HectoClash - Elevating Mathematical Excellence Worldwide</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Signup;
