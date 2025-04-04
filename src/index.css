@@ -1,1 +1,58 @@
 @import "tailwindcss";
+
+:root {
+    --navy: #081c30;
+    --dark-navy: #05111d;
+    --cream: #f8e8ba;
+    --yellow: #F4D35E;
+    --orange: #EE964B;
+    --coral: #F95738;
+  }
+  
+  @layer base {
+    body {
+      @apply text-white overflow-x-hidden leading-relaxed;
+    }
+  }
+  
+  @layer utilities {
+    .shadow-text-md {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .animate-rotate-slow {
+      animation: rotate 35s linear infinite;
+    }
+    
+    .animate-rotate-medium {
+      animation: rotate 25s linear infinite;
+    }
+    
+    .animate-rotate-fast {
+      animation: rotate 15s linear infinite;
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--coral);
+    transition: width 0.3s;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
