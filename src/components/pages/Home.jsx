@@ -8,7 +8,9 @@ export default function Home() {
     return(
         <>
         <div className='bg-[#05111d]'>
+      
         <Navbar/>
+       
         <div className=" z-0 w-full h-full overflow-hidden opacity-15 absolute top-0 right-0">
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[coral] rounded-[45%_47%_43%_42%] animate-rotate-slow"></div>
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#EE964B] rounded-[47%_43%_51%_45%] animate-rotate-medium"></div>
@@ -38,113 +40,32 @@ export default function Home() {
       </div>
 
 
-      <div className="py-20 px-7 bg-opacity-60 bg-[#081c3099] relative z-1 font-bold">
-        <h2 className="text-center text-4xl mb-16 text-amber-100 drop-shadow-md">
-          Why Choose <span className="text-[#F95738]">HectoClash</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-slate-800 bg-opacity-3 p-8 rounded-2xl transition-all hover:-translate-y-2 border border-white border-opacity-5 shadow-xl h-full flex flex-col">
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 w-16 h-16 rounded-xl flex justify-center items-center text-2xl mb-5 shadow-lg shadow-orange-500/30">
-          🏆 
+      <section className="py-20 px-6 text-center">
+        <h2 className="text-4xl font-bold text-[#EE964B]">Features</h2>
+        <div className="grid md:grid-cols-3 gap-6 mt-10">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold">Global Competitions</h3>
+            <p className="text-gray-400">Challenge players worldwide.</p>
           </div>
-          <h3 className="text-2xl mb-4 text-amber-100">Global Competitions</h3>
-          <p className="text-gray-300 text-lg leading-relaxed flex-grow">Test your skills against the world's best mathematical minds in our regularly scheduled tournaments with real prizes and recognition.</p>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold">Advanced Analytics</h3>
+            <p className="text-gray-400">Track and improve performance.</p>
           </div>
-
-          <div className="bg-slate-800 bg-opacity-3 p-8 rounded-2xl transition-all hover:-translate-y-2 border border-white border-opacity-5 shadow-xl h-full flex flex-col">
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 w-16 h-16 rounded-xl flex justify-center items-center text-2xl mb-5 shadow-lg shadow-orange-500/30">
-          📈 
-          </div>
-          <h3 className="text-2xl mb-4 text-amber-100">Advanced Analytics</h3>
-          <p className="text-gray-300 text-lg leading-relaxed flex-grow">Track your progress with our comprehensive performance metrics, identifying strengths and opportunities for improvement in your mathematical reasoning.</p>
-          </div>
-
-          <div className="bg-slate-800 bg-opacity-3 p-8 rounded-2xl transition-all hover:-translate-y-2 border border-white border-opacity-5 shadow-xl h-full flex flex-col">
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 w-16 h-16 rounded-xl flex justify-center items-center text-2xl mb-5 shadow-lg shadow-orange-500/30">
-          🧠 
-          </div>
-          <h3 className="text-2xl mb-4 text-amber-100">Cognitive Enhancement</h3>
-          <p className="text-gray-300 text-lg leading-relaxed flex-grow">Our scientifically designed challenges target specific cognitive functions, improving not just math skills but overall mental processing speed.</p>
-          </div>
-
-          <div className="bg-slate-800 bg-opacity-3 p-8 rounded-2xl transition-all hover:-translate-y-2 border border-white border-opacity-5 shadow-xl h-full flex flex-col">
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 w-16 h-16 rounded-xl flex justify-center items-center text-2xl mb-5 shadow-lg shadow-orange-500/30">
-          🌐 
-          </div>
-          <h3 className="text-2xl mb-4 text-amber-100">Community Support</h3>
-          <p className="text-gray-300 text-lg leading-relaxed flex-grow">Test your skills against the world's best mathematical minds in our regularly scheduled tournaments with real prizes and recognition.</p>
-          </div>
-
-          <div className="bg-slate-800 bg-opacity-3 p-8 rounded-2xl transition-all hover:-translate-y-2 border border-white border-opacity-5 shadow-xl h-full flex flex-col">
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 w-16 h-16 rounded-xl flex justify-center items-center text-2xl mb-5 shadow-lg shadow-orange-500/30">
-          🚀 
-          </div>
-          <h3 className="text-2xl mb-4 text-amber-100">Adaptive Learning</h3>
-          <p className="text-gray-300 text-lg leading-relaxed flex-grow">Test your skills against the world's best mathematical minds in our regularly scheduled tournaments with real prizes and recognition.</p>
-          </div>
-
-          <div className="bg-slate-800 bg-opacity-3 p-8 rounded-2xl transition-all hover:-translate-y-2 border border-white border-opacity-5 shadow-xl h-full flex flex-col">
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 w-16 h-16 rounded-xl flex justify-center items-center text-2xl mb-5 shadow-lg shadow-orange-500/30">
-          🔍 
-          </div>
-          <h3 className="text-2xl mb-4 text-amber-100">Career Advancement</h3>
-          <p className="text-gray-300 text-lg leading-relaxed flex-grow">Test your skills against the world's best mathematical minds in our regularly scheduled tournaments with real prizes and recognition.</p>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold">Cognitive Enhancement</h3>
+            <p className="text-gray-400">Sharpen your mind with rapid math.</p>
           </div>
         </div>
-        
-      </div>
-      
+      </section>
 
-      <div className="py-20 px-7 relative bg-[#05111d] z-1" >
-        <h2 className="text-center text-4xl mb-16 text-amber-100 drop-shadow-md font-bold">
-          What Our <span className="text-orange-500">Members</span> Say
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-[#081c30] bg-opacity-3 p-8 rounded-2xl border-opacity-5 shadow-xl">
-            <p className="italic mb-5 text-gray-300 text-lg leading-relaxed">
-              "Since joining HectoClash six months ago, my calculation speed has improved dramatically. I'm now solving complex problems in half the time it used to take me."
-            </p>
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-slate-800 flex justify-center items-center mr-4 font-bold text-amber-100 border-2 border-amber-500">
-              JD
-              </div>
-              <div>
-                <h4 className="text-lg text-amber-100 mb-1 font-semibold">James Dougla</h4>
-                <p className="text-sm text-gray-400">Software Engineer</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-[#081c30] bg-opacity-3 p-8 rounded-2xl border-opacity-5 shadow-xl">
-            <p className="italic mb-5 text-gray-300 text-lg leading-relaxed">
-            "The community aspect of HectoClash is incredible. I've connected with like-minded people who challenge and inspire me to improve every day."
-            </p>
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-slate-800 flex justify-center items-center mr-4 font-bold text-amber-100 border-2 border-amber-500">
-              LM              </div>
-              <div>
-                <h4 className="text-lg text-amber-100 mb-1 font-semibold">Lisa Mathews</h4>
-                <p className="text-sm text-gray-400">Mathematics Professor</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-[#081c30] bg-opacity-3 p-8 rounded-2xl border-opacity-5 shadow-xl">
-            <p className="italic mb-5 text-gray-300 text-lg leading-relaxed">
-            "HectoClash's analytics helped me identify specific areas where I needed improvement. After three months of focused practice, I've seen a 40% boost in my performance."
-            </p>
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-slate-800 flex justify-center items-center mr-4 font-bold text-amber-100 border-2 border-amber-500">
-                RS
-              </div>
-              <div>
-                <h4 className="text-lg text-amber-100 mb-1 font-semibold">Robert Stein</h4>
-                <p className="text-sm text-gray-400">Finance Analyst</p>
-              </div>
-            </div>
-          </div>
+      {/* Testimonials */}
+      <section className="py-20 px-6 bg-gray-800 text-center">
+        <h2 className="text-4xl font-bold text-[#EE964B]">Testimonials</h2>
+        <div className="mt-10">
+          <p className="text-gray-300 italic">"HectoClash made mental math fun and engaging!"</p>
+          <p className="mt-2 text-gray-400">- Alex Johnson</p>
         </div>
-      </div>
+      </section>
 
       <Footer/>
       </div>
