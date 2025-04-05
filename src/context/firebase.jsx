@@ -1,10 +1,6 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, set, ref } from "firebase/database";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useState } from "react";
-// import { onAuthStateChanged } from "firebase/auth";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -28,8 +24,8 @@ const firebaseConfig = {
 
 const firebaseapp = initializeApp(firebaseConfig);
 const FireBaseContext = createContext(null);
-const firebaseAuth = getAuth(firebaseapp);
-const database = getDatabase(firebaseapp);
+export const firebaseAuth = getAuth(firebaseapp);
+export const database = getDatabase(firebaseapp);
 const getCurrentUser = () => firebaseAuth.currentUser;
 
 export const usefirebase = () => useContext(FireBaseContext);
@@ -103,4 +99,4 @@ export const FirebaseProvider = (props) => {
   {props.children}
 </FireBaseContext.Provider>
   );
-}
+}; 
