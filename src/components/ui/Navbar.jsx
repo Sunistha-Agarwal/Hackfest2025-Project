@@ -34,7 +34,7 @@ const Navbar = () => {
       <button 
         className="bg-gradient-to-br from-[#EE964B] to-[#F95738] text-white border-none py-3 px-7 rounded-md font-bold cursor-pointer transition-all duration-300 text-base tracking-wider shadow-md shadow-[#F95738]/30 no-underline hover:translate-y-[-3px] hover:scale-105 hover:shadow-lg hover:shadow-[#F95738]/500"
       >
-        Sign In
+        Sign Up
       </button>
     </nav>
   );
