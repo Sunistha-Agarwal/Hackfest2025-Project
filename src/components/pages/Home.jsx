@@ -1,5 +1,6 @@
 import { NavLink,Link } from 'react-router-dom';
-import Footer from "../ui/Footer"
+import Footer from "../ui/Footer";
+import Navbar from '../ui/Navbar';
 
 
 export default function Home() {
@@ -7,41 +8,9 @@ export default function Home() {
     return(
         <>
         <div className='bg-[#05111d]'>
-        <nav className="flex justify-between items-center p-5 bg-[#05111d] sticky top-0 z-10 shadow-lg backdrop-blur-md md:px-[5%]">
-      <div className="bg-gradient-to-r from-[#EE964B] to-[#F95738] w-12 h-12 rounded-full flex justify-center items-center font-bold text-lg shadow-lg shadow-coral/50">
-        HC
-      </div>
       
-      <ul className="hidden md:flex list-none">
-        <li className="mx-5">
-          <NavLink to="/" className="text-white no-underline font-medium transition-all duration-300 py-2.5 relative hover:text-[coral] hover:shadow-text-md">
-            Home
-          </NavLink>
-        </li>
-        <li className="mx-5">
-          <NavLink to="/features" className="text-white no-underline font-medium transition-all duration-300 py-2.5 relative hover:text-[coral] hover:shadow-text-md">
-            Features
-          </NavLink>
-        </li>
-        <li className="mx-5">
-          <NavLink to="/about" className="text-white no-underline font-medium transition-all duration-300 py-2.5 relative hover:text-[coral] hover:shadow-text-md">
-            About
-          </NavLink>
-        </li>
-        <li className="mx-5">
-          <NavLink to="/contact" className="text-white no-underline font-medium transition-all duration-300 py-2.5 relative hover:text-[coral] hover:shadow-text-md">
-            Contact
-          </NavLink>
-        </li>
-      </ul>
-      
-      <a href='/Signin'><button 
-        className="bg-gradient-to-r from-[#EE964B] to-[coral] text-white border-none py-3 px-7 rounded-md font-bold cursor-pointer transition-all duration-300 text-base shadow-md shadow-coral/30 hover:transform hover:scale-105 hover:-translate-y-1 hover:shadow-lg hover:shadow-coral/50"
-
-      >
-        Sign Up
-      </button></a>
-    </nav>
+        <Navbar/>
+       
         <div className=" z-0 w-full h-full overflow-hidden opacity-15 absolute top-0 right-0">
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[coral] rounded-[45%_47%_43%_42%] animate-rotate-slow"></div>
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#EE964B] rounded-[47%_43%_51%_45%] animate-rotate-medium"></div>
@@ -59,12 +28,14 @@ export default function Home() {
           <p className="mb-10 leading-relaxed text-xl text-white/85 max-w-[90%]">
             Join the elite community of mental mathematicians who are pushing the boundaries of calculation speed and problem-solving. HectoClash offers a revolutionary approach to mathematical training through innovative challenges, competitions, and personalized learning paths.
           </p>
+          <NavLink to="/play">
           <button 
             className="bg-gradient-to-r from-[#EE964B] to-[coral] text-white border-none py-4 px-8 rounded-lg font-bold text-xl cursor-pointer transition-all duration-400 inline-flex items-center gap-2.5 shadow-lg shadow-[coral]/40 hover:transform hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-[coral]/50 active:-translate-y-0.5 active:shadow-lg active:shadow-[coral]/40"
 
           >
-            Join the Community
+            PLAY
           </button>
+          </NavLink>
         </div>
       </div>
 
