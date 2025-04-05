@@ -5,6 +5,7 @@ import Signup from "./components/pages/Signup";
 import Leaderboard from './components/pages/Leaderboard';
 import Practice from './components/challenges/Practice';
 import About from './components/pages/About';
+import Profile from './components/pages/Profile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/Leaderboard' element={<Leaderboard/>} />
           <Route path='/play' element={<Practice/>} />
           <Route path='/about' element={<About/>} />
+          <Route path='/profile' element={<Profile/>} />
         </Routes>
     </Router >
     
