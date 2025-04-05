@@ -9,25 +9,39 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { signInWithGoogle } = usefirebase();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     if (!email || !password) {
       alert("Please fill in both fields");
       return;
+
     }
-  
+
     setLoading(true);
     try {
-        await firebase.loginUser(email, password);
-        alert("Login successful");
-        navigate("/");
-      } catch (error) {
-        alert("Login failed: " + error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+      await firebase.loginUser(email, password);
+      alert("Login successful");
+      navigate("/");
+    } catch (error) {
+      alert("Login failed: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const user = await signInWithGoogle();
+      console.log("Logged in as:", user.displayName);
+      alert("Google login successful");
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
 
   const footerLinks = ["Privacy Policy", "Terms of Service", "FAQ", "Support"];
 
@@ -69,7 +83,8 @@ export default function Signin() {
                 placeholder="Enter your email"
                 required
                 className="bg-white/10 border border-[#081c30]/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
-                value={email} onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -83,7 +98,8 @@ export default function Signin() {
                 placeholder="Enter your password"
                 required
                 className="bg-white/10 border border-[#081c30]/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
-                value={password} onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -95,11 +111,12 @@ export default function Signin() {
                 Forgot password?
               </a>
             </div>
-
-            <button
-              type="submit"
+            
+            <button 
+              type="submit" 
               disabled={loading}
-              className="bg-gradient-to-r from-orange-400 to-red-500 text-white border-none py-4 rounded-lg font-bold text-lg cursor-pointer transition-all duration-300 shadow-md shadow-red-500/30 hover:-translate-y-1 hover:shadow-lg mt-2 flex justify-center items-center"
+              className="bg-gradient-to-r from-[#EE964B] to-[coral] text-white border-none py-4 rounded-lg font-bold text-lg cursor-pointer transition-all duration-300 shadow-md shadow-red-500/30 hover:-translate-y-1 hover:shadow-lg mt-2 flex justify-center items-center"
+
             >
               {loading ? (
                 <svg
@@ -136,7 +153,7 @@ export default function Signin() {
             <button
               type="button"
               className="flex items-center justify-center gap-2 bg-white text-gray-800 border-none py-3.5 rounded-lg font-medium text-base cursor-pointer transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg"
-            >
+              onClick={handleGoogleLogin}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
