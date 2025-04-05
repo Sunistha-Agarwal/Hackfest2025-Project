@@ -83,7 +83,7 @@ export default function Signin() {
             <button 
               type="submit" 
               disabled={isLoading}
-              className="bg-gradient-to-r from-orange-400 to-red-500 text-white border-none py-4 rounded-lg font-bold text-lg cursor-pointer transition-all duration-300 shadow-md shadow-red-500/30 hover:-translate-y-1 hover:shadow-lg mt-2 flex justify-center items-center"
+              className="bg-gradient-to-r from-[#EE964B] to-[coral] text-white border-none py-4 rounded-lg font-bold text-lg cursor-pointer transition-all duration-300 shadow-md shadow-red-500/30 hover:-translate-y-1 hover:shadow-lg mt-2 flex justify-center items-center"
             >
               {isLoading ? (
                 <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
