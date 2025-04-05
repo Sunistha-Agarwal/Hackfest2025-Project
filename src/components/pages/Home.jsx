@@ -1,5 +1,5 @@
 import { NavLink,Link } from 'react-router-dom';
-import Footer from "../ui/Footer"
+import Footer from "../ui/Footer";
 import Navbar from '../ui/Navbar';
 
 
@@ -26,12 +26,14 @@ export default function Home() {
           <p className="mb-10 leading-relaxed text-xl text-white/85 max-w-[90%]">
             Join the elite community of mental mathematicians who are pushing the boundaries of calculation speed and problem-solving. HectoClash offers a revolutionary approach to mathematical training through innovative challenges, competitions, and personalized learning paths.
           </p>
+          <NavLink to="/play">
           <button 
             className="bg-gradient-to-r from-[#EE964B] to-[coral] text-white border-none py-4 px-8 rounded-lg font-bold text-xl cursor-pointer transition-all duration-400 inline-flex items-center gap-2.5 shadow-lg shadow-[coral]/40 hover:transform hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-[coral]/50 active:-translate-y-0.5 active:shadow-lg active:shadow-[coral]/40"
 
           >
             PLAY
           </button>
+          </NavLink>
         </div>
       </div>
 

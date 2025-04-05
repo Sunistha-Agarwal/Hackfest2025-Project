@@ -31,7 +31,7 @@ export default function Signin() {
       <Navbar/>
       
       {/* Main Content */}
-      <main className="flex-1 flex justify-center items-center p-4 md:p-12 relative z-1">
+      <main className="flex-1 flex justify-center items-center p-4 md:p-12 relative z-1 max-h-screen">
         {/* Background Effects */}
         <div className="absolute inset-0 overflow-hidden opacity-15">
           <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-red-500 rounded-[45%_47%_43%_42%] animate-[spin_15s_linear_infinite]"></div>
