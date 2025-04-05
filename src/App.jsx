@@ -3,7 +3,7 @@ import Home from "./components/pages/Home.jsx";
 import Signin from "./components/pages/Signin";
 import Signup from "./components/pages/Signup";
 import Leaderboard from './components/pages/Leaderboard';
-import Practice from './components/challenges/practice';
+import Practice from './components/challlenges/practice';
 import About from './components/pages/About';
 
 function App() {
