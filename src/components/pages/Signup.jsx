@@ -67,7 +67,7 @@ const Signup = () => {
           {/* Signup Card */}
           <div className="bg-[#081c30]/70 border border-white/10 rounded-xl p-8 flex-1 shadow-xl backdrop-blur-md">
             <div className="text-center mb-6">
-              <h1 className="text-4xl mb-2.5 text-white shadow-md">
+              <h1 className="text-4xl mb-2.5 text-white shadow-md font-bold">
                 Join Hecto<span className="bg-gradient-to-br from-[#F4D35E] to-[#F95738] bg-clip-text text-transparent">Clash</span>
               </h1>
               <p className="text-[#f8e8ba] text-lg opacity-90">Begin your journey to mathematical excellence</p>
@@ -148,7 +148,7 @@ const Signup = () => {
                   id="mathLevel" 
                   name="mathLevel" 
                   required 
-                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)] cursor-pointer"
+                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-black text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)] cursor-pointer"
                   value={formData.mathLevel}
                   onChange={handleChange}
                 >
