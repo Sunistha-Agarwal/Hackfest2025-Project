@@ -13,6 +13,16 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const getInitialRating = (level) => {
+    switch (level) {
+      case "beginner": return 800;
+      case "intermediate": return 1200;
+      case "advanced": return 1600;
+      case "expert": return 2000;
+      default: return 1000;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
@@ -47,6 +57,7 @@ const Signup = () => {
           firstName,
           lastName,
           mathLevel,
+          rating: getInitialRating(mathLevel),
           createdAt: new Date().toISOString(),
         });
         setLoading(false);

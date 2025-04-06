@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
  import Navbar from '../ui/Navbar'
  
  
+ 
  function Practice(){
  
    const [digits, setDigits] = useState('');
