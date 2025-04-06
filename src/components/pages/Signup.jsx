@@ -13,6 +13,16 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const getInitialRating = (level) => {
+    switch (level) {
+      case "beginner": return 800;
+      case "intermediate": return 1200;
+      case "advanced": return 1600;
+      case "expert": return 2000;
+      default: return 1000;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
@@ -47,6 +57,7 @@ const Signup = () => {
           firstName,
           lastName,
           mathLevel,
+          rating: getInitialRating(mathLevel),
           createdAt: new Date().toISOString(),
         });
         setLoading(false);
@@ -241,7 +252,7 @@ const Signup = () => {
                   id="mathLevel"
                   name="mathLevel"
                   required
-                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)] cursor-pointer"
+                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-black text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)] cursor-pointer"
                   value={mathLevel}
                   onChange={(e) => setMathLevel(e.target.value)}
                 >
