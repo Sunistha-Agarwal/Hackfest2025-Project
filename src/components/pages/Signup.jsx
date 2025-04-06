@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { usefirebase } from "../../context/firebase";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+import Footer from "../ui/Footer"; 
 
 const Signup = () => {
   const firebase = usefirebase();
@@ -64,7 +65,6 @@ const Signup = () => {
 
   return (
     <div className="bg-[#05111d] text-white min-h-screen flex flex-col">
-      {/* Navigation Bar */}
       <nav className="flex justify-between items-center p-5 bg-[#05111d]/95 sticky top-0 z-10 shadow-lg backdrop-blur-md flex-col md:flex-row gap-5 md:gap-0">
         <a
           href="/"
@@ -86,7 +86,7 @@ const Signup = () => {
               href="#"
               className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
             >
-              Features
+              Leaderboard
             </a>
           </li>
           <li className="md:mx-5">
@@ -97,34 +97,23 @@ const Signup = () => {
               About
             </a>
           </li>
-          <li className="md:mx-5">
-            <a
-              href="#"
-              className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
-            >
-              Contact
-            </a>
-          </li>
         </ul>
-        <a
-          href="/login"
+        <button 
           className="bg-gradient-to-br from-[#EE964B] to-[#F95738] text-white border-none py-3 px-7 rounded-md font-bold cursor-pointer transition-all duration-300 text-base tracking-wider shadow-md shadow-[#F95738]/30 no-underline hover:translate-y-[-3px] hover:scale-105 hover:shadow-lg hover:shadow-[#F95738]/50"
         >
           Login
-        </a>
+        </button>
       </nav>
 
-      {/* Animated Background Waves */}
       <div className="absolute top-0 right-0 w-full h-full z-0 overflow-hidden opacity-15">
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#F95738] rounded-[45%_47%_43%_42%] animate-[rotate_15s_linear_infinite]"></div>
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#EE964B] rounded-[47%_43%_51%_45%] animate-[rotate_25s_linear_infinite]"></div>
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#f8e8ba] rounded-[42%_46%_39%_45%] animate-[rotate_35s_linear_infinite]"></div>
       </div>
 
-      {/* Main Content */}
+
       <div className="flex-1 flex items-center justify-center p-5 md:p-8 relative z-1">
         <div className="flex max-w-[900px] w-full gap-5 items-start flex-col lg:flex-row">
-          {/* Signup Card */}
           <div className="bg-[#081c30]/70 border border-white/10 rounded-xl p-8 flex-1 shadow-xl backdrop-blur-md">
             <div className="text-center mb-6">
               <h1 className="text-4xl mb-2.5 text-white shadow-md">
@@ -314,7 +303,7 @@ const Signup = () => {
             </form>
           </div>
 
-          {/* Benefits Card */}
+         
           <div className="bg-[#081c30]/70 border border-white/10 rounded-xl p-8 w-full lg:w-[280px] shadow-xl backdrop-blur-md lg:sticky lg:top-[100px]">
             <div>
               <div className="flex justify-center mb-4">
@@ -347,40 +336,8 @@ const Signup = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="p-8 bg-[#05111d] text-center border-t border-white/5">
-        <div className="flex flex-col gap-4 max-w-6xl mx-auto">
-          <div className="flex justify-center gap-8 mb-2.5">
-            <a
-              href="#"
-              className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]"
-            >
-              FAQ
-            </a>
-            <a
-              href="#"
-              className="text-white/70 no-underline transition-colors duration-300 hover:text-[#F95738]"
-            >
-              Support
-            </a>
-          </div>
-          <p className="text-white/50 text-sm">
-            © 2025 HectoClash - Elevating Mathematical Excellence Worldwide
-          </p>
-        </div>
-      </footer>
+
+      <Footer/>
     </div>
   );
 };
