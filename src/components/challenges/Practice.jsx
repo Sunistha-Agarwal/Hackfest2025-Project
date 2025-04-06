@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../ui/Navbar';
 import * as math from 'mathjs';
+import Footer from '../ui/Footer';
+import { getAuth } from 'firebase/auth';
+import { getDatabase, set, ref, get, child, update } from "firebase/database";
 
 function Practice() {
   const [digits, setDigits] = useState('');
@@ -10,6 +13,50 @@ function Practice() {
   const [errorMessage, setErrorMessage] = useState('');
   const [timeLeft, setTimeLeft] = useState(60);
   const [timerActive, setTimerActive] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+
+  const updateUserStats = async (status, elapsedTime) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+  
+    if (!user) {
+      console.error("No user is signed in.");
+      return;
+    }
+  
+    const userId = user.uid;
+    const database = getDatabase();
+    const userRef = ref(database, `users/${userId}`);
+  
+    try {
+      const snapshot = await get(userRef);
+      let data = snapshot.exists() ? snapshot.val() : {
+        noOfMatches: 0,
+        wins: 0,
+        totalTime: 0,
+        avgTime: 0,
+        rating: 0
+      };
+  
+      const newNoOfMatches = data.noOfMatches + 1;
+      const newWins = status === 'won' ? data.wins + 1 : data.wins;
+      const newTotalTime = data.totalTime + elapsedTime;
+      const newAvgTime = newWins > 0 ? (newTotalTime / newWins).toFixed(2) : 0;
+  
+      const ratingChange = status === 'won' ? 5 : -2;
+      const newRating = Math.max(0, data.rating + ratingChange);
+  
+      await update(userRef, {
+        noOfMatches: newNoOfMatches,
+        wins: newWins,
+        totalTime: newTotalTime,
+        avgTime: newAvgTime,
+        rating: newRating
+      });
+    } catch (err) {
+      console.error("Error updating stats:", err);
+    }
+  };
 
   const generateSequence = () => {
     let seq = '';
@@ -27,6 +74,7 @@ function Practice() {
     setErrorMessage('');
     setTimeLeft(60);
     setTimerActive(true);
+    setStartTime(Date.now());
     const newSolution = solveHectoc(newDigits);
     console.log(`Sequence: ${newDigits}, Solution: ${newSolution}`);
     setSolution(newSolution || "No exact solution found");
@@ -127,6 +175,8 @@ function Practice() {
       if (Math.abs(result - 100) < 0.0001) {
         setGameStatus('won');
         setTimerActive(false);
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        updateUserStats('won', elapsed);
       } else {
         setErrorMessage(`Your expression equals ${result}, not 100`);
       }
@@ -137,7 +187,9 @@ function Practice() {
 
   const giveUp = () => {
     setGameStatus('gaveUp');
-    setTimerActive(false);
+setTimerActive(false);
+const elapsed = Math.floor((Date.now() - startTime) / 1000);
+updateUserStats('gaveUp', elapsed);
   };
 
   useEffect(() => {
@@ -149,6 +201,8 @@ function Practice() {
     } else if (timeLeft === 0 && timerActive) {
       setGameStatus('lost');
       setTimerActive(false);
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      updateUserStats('lost', elapsed);
     }
 
     return () => clearInterval(timer);
@@ -237,7 +291,7 @@ function Practice() {
       <Navbar />
       <div className="flex flex-col items-center justify-center bg-[#081c30] p-4 relative overflow-hidden min-h-screen w-full lg:max-h-screen">
         <div className="flex flex-col md:flex-row justify-center items-start gap-6 p-4 w-full max-w-6xl">
-          <div className="w-full md:w-2/3 bg-[#081c30] rounded-lg shadow-lg p-6 text-white relative z-10 border border-[rgba(255,255,255,0.05)] lg:my-auto max-h-screen">
+          <div className="w-full md:w-2/3 bg-[#081c30] rounded-lg shadow-lg p-6 text-white relative z-1 border border-[rgba(255,255,255,0.05)] lg:my-auto max-h-screen">
             <h1 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-[#F4D35E] to-[#F95738] bg-clip-text text-transparent">HectoClash Math Challenge</h1>
 
             {gameStatus === 'playing' && (
@@ -361,7 +415,7 @@ function Practice() {
           </div>
 
           {/* Rules Card */}
-          <div className="w-full md:w-1/3 bg-[#081c30] rounded-lg shadow-lg p-6 text-white relative z-10 border border-[rgba(255,255,255,0.05)] mt-6 md:mt-0">
+          <div className="w-full md:w-1/3 bg-[#081c30] rounded-lg shadow-lg p-6 text-white relative z-1 border border-[rgba(255,255,255,0.05)] mt-6 md:mt-0">
             <h2 className={styles.rulesTitle}>{gameRules.title}</h2>
             <ul className={styles.rulesList}>
               {gameRules.rules.map((rule, index) => (
@@ -414,6 +468,8 @@ function Practice() {
           </div>
         </div>
       </div>
+
+    <Footer/>
     </>
   );
 }
