@@ -76,46 +76,6 @@ const Signup = () => {
 
   return (
     <div className="bg-[#05111d] text-white min-h-screen flex flex-col">
-      <nav className="flex justify-between items-center p-5 bg-[#05111d]/95 sticky top-0 z-10 shadow-lg backdrop-blur-md flex-col md:flex-row gap-5 md:gap-0">
-        <a
-          href="/"
-          className="bg-gradient-to-br from-[#EE964B] to-[#F95738] w-12 h-12 rounded-full flex justify-center items-center font-bold text-lg shadow-md shadow-[#F95738]/50 text-white no-underline"
-        >
-          HC
-        </a>
-        <ul className="flex list-none w-full md:w-auto justify-between md:justify-start">
-          <li className="md:mx-5">
-            <a
-              href="/"
-              className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
-            >
-              Home
-            </a>
-          </li>
-          <li className="md:mx-5">
-            <a
-              href="#"
-              className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
-            >
-              Leaderboard
-            </a>
-          </li>
-          <li className="md:mx-5">
-            <a
-              href="#"
-              className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
-            >
-              About
-            </a>
-          </li>
-        </ul>
-        <button 
-          className="bg-gradient-to-br from-[#EE964B] to-[#F95738] text-white border-none py-3 px-7 rounded-md font-bold cursor-pointer transition-all duration-300 text-base tracking-wider shadow-md shadow-[#F95738]/30 no-underline hover:translate-y-[-3px] hover:scale-105 hover:shadow-lg hover:shadow-[#F95738]/50"
-        >
-          Login
-        </button>
-      </nav>
-
       <div className="absolute top-0 right-0 w-full h-full z-0 overflow-hidden opacity-15">
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#F95738] rounded-[45%_47%_43%_42%] animate-[rotate_15s_linear_infinite]"></div>
         <div className="absolute right-[-300px] top-[100px] w-[1100px] h-[1100px] border-2 border-[#EE964B] rounded-[47%_43%_51%_45%] animate-[rotate_25s_linear_infinite]"></div>
