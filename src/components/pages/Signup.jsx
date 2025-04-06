@@ -252,7 +252,7 @@ const Signup = () => {
                   id="mathLevel"
                   name="mathLevel"
                   required
-                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)] cursor-pointer"
+                  className="bg-white/10 border border-white/20 rounded-lg p-3 text-black text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)] cursor-pointer"
                   value={mathLevel}
                   onChange={(e) => setMathLevel(e.target.value)}
                 >
