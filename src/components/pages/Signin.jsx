@@ -9,25 +9,51 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("Please fill in both fields");
+      setError("Please fill in both fields");
       return;
     }
   
     setLoading(true);
+    setError("");
+    
     try {
-        await firebase.loginUser(email, password);
-        alert("Login successful");
-        navigate("/");
-      } catch (error) {
-        alert("Login failed: " + error.message);
-      } finally {
-        setLoading(false);
+      // Sign in user with email/password
+      await firebase.loginUser(email, password);
+      
+      setLoading(false);
+      navigate("/");
+    } catch (err) {
+      setLoading(false);
+      if (err.code === "auth/user-not-found") {
+        setError("No user found with this email.");
+      } else if (err.code === "auth/wrong-password") {
+        setError("Incorrect password.");
+      } else if (err.code === "auth/invalid-credential") {
+        setError("Invalid email or password.");
+      } else {
+        setError(`Error: ${err.message}`);
       }
-    };
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      await firebase.signInWithGoogle();
+      navigate("/");
+    } catch (err) {
+      setError("Google sign-in failed. Please try again.");
+      console.error("Google sign-in error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const footerLinks = ["Privacy Policy", "Terms of Service", "FAQ", "Support"];
 
@@ -58,6 +84,12 @@ export default function Signin() {
             </p>
           </div>
 
+          {error && (
+            <div className="bg-red-500/20 border border-red-500/30 text-white p-3 rounded-lg mb-4">
+              {error}
+            </div>
+          )}
+
           <form className="flex flex-col gap-5" onSubmit={handleLogin}>
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-amber-100">
@@ -69,7 +101,8 @@ export default function Signin() {
                 placeholder="Enter your email"
                 required
                 className="bg-white/10 border border-[#081c30]/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
-                value={email} onChange={(e) => setEmail(e.target.value)}
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -83,7 +116,8 @@ export default function Signin() {
                 placeholder="Enter your password"
                 required
                 className="bg-white/10 border border-[#081c30]/20 rounded-lg p-3 text-white text-base transition-all duration-300 focus:outline-none focus:border-[#EE964B] focus:bg-white/15 focus:shadow-[0_0_0_3px_rgba(238,150,75,0.2)]"
-                value={password} onChange={(e) => setPassword(e.target.value)}
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -99,7 +133,7 @@ export default function Signin() {
             <button
               type="submit"
               disabled={loading}
-              className="bg-gradient-to-r from-orange-400 to-red-500 text-white border-none py-4 rounded-lg font-bold text-lg cursor-pointer transition-all duration-300 shadow-md shadow-red-500/30 hover:-translate-y-1 hover:shadow-lg mt-2 flex justify-center items-center"
+              className="bg-gradient-to-r from-orange-400 to-red-500 text-white border-none py-4 rounded-lg font-bold text-lg cursor-pointer transition-all duration-300 shadow-md shadow-red-500/30 hover:-translate-y-1 hover:shadow-lg mt-2 flex justify-center items-center disabled:opacity-70 disabled:hover:translate-y-0"
             >
               {loading ? (
                 <svg
@@ -126,8 +160,6 @@ export default function Signin() {
                 "Sign In"
               )}
             </button>
-
-            
           </form>
 
           <div className="mt-8 text-center text-white text-opacity-80 text-sm">
