@@ -36,6 +36,11 @@ const Navbar = () => {
             Leaderboard
           </NavLink>
         </li>
+        <li className="mx-5">
+          <NavLink to="/about" className="text-white no-underline font-medium transition-all duration-300 py-2.5 relative hover:text-[coral] hover:shadow-text-md">
+            About
+          </NavLink>
+        </li>
       </ul>
       
       {!isLoggedIn ? (

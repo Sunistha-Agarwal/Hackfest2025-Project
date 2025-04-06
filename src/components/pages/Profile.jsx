@@ -13,7 +13,8 @@ const Profile = () => {
         <ul className="flex gap-8">
           <li><NavLink to="/" className="text-white font-medium hover:text-[#F95738] transition-colors relative">Home</NavLink></li>
           <li><NavLink to="/leaderboard" className="text-white font-medium hover:text-[#F95738] transition-colors relative">LeaderBoard</NavLink></li>
-                  </ul>
+          <li><NavLink to="/about" className="text-white font-medium hover:text-[#F95738] transition-colors relative">About</NavLink></li>
+        </ul>
         
         <NavLink to="profile.html" className="bg-gradient-to-br from-[#EE964B] to-[#F95738] text-white px-5 py-2 rounded-md font-bold flex items-center gap-2 hover:shadow-lg hover:-translate-y-0.5 transition-all">
           <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center font-bold text-[#081c30]">M</div>
@@ -30,7 +31,7 @@ const Profile = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center py-8 px-4 relative z-1">
         <div className="text-center mb-8 w-full">
-          <h1 className="text-4xl mb-2 text-white">
+          <h1 className="text-4xl mb-2 text-white font-bold">
             Player <span className="bg-gradient-to-br from-[#F4D35E] to-[#F95738] bg-clip-text text-transparent">Profile</span>
           </h1>
           <p className="text-[#f8e8ba] opacity-90">View your stats, achievements and recent games</p>
@@ -38,23 +39,23 @@ const Profile = () => {
         
         <div className="flex w-full max-w-6xl gap-8 mx-auto lg:flex-row flex-col">
           {/* Main Profile Card */}
-          <div className="bg-[#081c30] bg-opacity-70 border border-white border-opacity-10 rounded-2xl p-6 flex-3 shadow-xl backdrop-blur-md flex flex-col">
+          <div className="bg-[#07192b] bg-opacity-70 border border-[#081c30]/40 border-opacity-10 rounded-2xl p-6 flex-3 shadow-xl backdrop-blur-md flex flex-col">
             {/* Profile Details */}
-            <div className="flex md:flex-row flex-col gap-8 mb-8 items-center">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#0d6efd] to-[#5a9eee] flex items-center justify-center text-5xl font-bold text-white shadow-lg border-4 border-white border-opacity-20 flex-shrink-0">M</div>
+          <div className="flex md:flex-row flex-col gap-8 mb-8 items-center p-5">
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#0d6efd] to-[#5a9eee] flex items-center justify-center text-5xl font-bold text-white shadow-lg border-4 border-white border-opacity-20 flex-shrink-0">M</div>
               
               <div className="flex-grow md:text-left text-center">
                 <h2 className="text-3xl font-bold mb-1">MathPro92</h2>
                 <div className="inline-block bg-gradient-to-br from-[#EE964B] to-[#F95738] px-3 py-1 rounded-full font-bold mb-2 text-sm">Advanced</div>
                 <p>Member since April 2023 • 245 games played</p>
                 <div className="flex gap-2 mt-2 flex-wrap md:justify-start justify-center">
-                  <div className="bg-white bg-opacity-10 rounded-md px-3 py-1 flex items-center gap-1 text-sm">
+                  <div className="bg-[#142535] bg-opacity-40 rounded-md px-3 py-1 flex items-center gap-1 text-sm">
                     <span className="text-[#F4D35E] font-bold">★</span> Math Wizard
                   </div>
-                  <div className="bg-white bg-opacity-10 rounded-md px-3 py-1 flex items-center gap-1 text-sm">
+                  <div className="bg-[#142535] bg-opacity-10 rounded-md px-3 py-1 flex items-center gap-1 text-sm">
                     <span className="text-[#F4D35E] font-bold">⚡</span> Quick Solver
                   </div>
-                  <div className="bg-white bg-opacity-10 rounded-md px-3 py-1 flex items-center gap-1 text-sm">
+                  <div className="bg-[#142535] bg-opacity-10 rounded-md px-3 py-1 flex items-center gap-1 text-sm">
                     <span className="text-[#F4D35E] font-bold">🏆</span> Tournament Winner
                   </div>
                 </div>
@@ -63,19 +64,19 @@ const Profile = () => {
             
             {/* Stats Overview */}
             <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 mb-8">
-              <div className="bg-white bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
+              <div className="bg-[#142535] bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
                 <div className="text-3xl font-bold mb-1 text-[#F4D35E]">75%</div>
                 <div className="text-[#f8e8ba] text-sm">Win Rate</div>
               </div>
-              <div className="bg-white bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
+              <div className="bg-[#142535] bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
                 <div className="text-3xl font-bold mb-1 text-[#F4D35E]">184</div>
                 <div className="text-[#f8e8ba] text-sm">Wins</div>
               </div>
-              <div className="bg-white bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
+              <div className="bg-[#142535] bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
                 <div className="text-3xl font-bold mb-1 text-[#F4D35E]">61</div>
                 <div className="text-[#f8e8ba] text-sm">Losses</div>
               </div>
-              <div className="bg-white bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
+              <div className="bg-[#142535] bg-opacity-5 p-4 rounded-lg text-center transition-all hover:-translate-y-1 hover:bg-opacity-10">
                 <div className="text-3xl font-bold mb-1 text-[#F4D35E]">38s</div>
                 <div className="text-[#f8e8ba] text-sm">Avg. Solution Time</div>
               </div>
@@ -84,7 +85,7 @@ const Profile = () => {
             {/* Charts Grid */}
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 mb-8">
               {/* Performance Chart */}
-              <div className="bg-white bg-opacity-5 rounded-lg p-5 min-h-[300px] flex flex-col">
+              <div className="bg-[#142535] bg-opacity-5 rounded-lg p-5 min-h-[300px] flex flex-col">
                 <h3 className="mb-4 text-lg text-[#f8e8ba]">Performance Trend (Last 10 Games)</h3>
                 <div className="flex-grow relative">
                   <svg className="w-full h-[220px]" viewBox="0 0 500 250" preserveAspectRatio="none">
@@ -141,124 +142,31 @@ const Profile = () => {
               </div>
               
               {/* Operations Usage Chart */}
-              <div className="bg-white bg-opacity-5 rounded-lg p-5 min-h-[300px] flex flex-col">
+              <div className="bg-[#142535] bg-opacity-5 rounded-lg p-5 min-h-[300px] flex flex-col">
                 <h3 className="mb-4 text-lg text-[#f8e8ba]">Operation Usage</h3>
                 <div className="flex-grow">
                   <div className="w-full">
-                    <div className="h-8 mb-4 bg-white bg-opacity-10 rounded relative overflow-hidden">
+                    <div className="h-8 mb-4 bg-[#142535] bg-opacity-10 rounded relative overflow-hidden">
                       <div className="h-full absolute left-0 top-0 rounded bg-gradient-to-r from-[#0d6efd] to-[#5a9eee] flex items-center px-4 text-white font-bold w-[65%]">+ Addition (65%)</div>
                     </div>
                     
-                    <div className="h-8 mb-4 bg-white bg-opacity-10 rounded relative overflow-hidden">
+                    <div className="h-8 mb-4 bg-[#142535] bg-opacity-10 rounded relative overflow-hidden">
                       <div className="h-full absolute left-0 top-0 rounded bg-gradient-to-r from-[#F95738] to-[#fa7b62] flex items-center px-4 text-white font-bold w-[48%]">- Subtraction (48%)</div>
                     </div>
                     
-                    <div className="h-8 mb-4 bg-white bg-opacity-10 rounded relative overflow-hidden">
+                    <div className="h-8 mb-4 bg-[#142535] bg-opacity-10 rounded relative overflow-hidden">
                       <div className="h-full absolute left-0 top-0 rounded bg-gradient-to-r from-[#28a745] to-[#3dc760] flex items-center px-4 text-white font-bold w-[82%]">× Multiplication (82%)</div>
                     </div>
                     
-                    <div className="h-8 mb-4 bg-white bg-opacity-10 rounded relative overflow-hidden">
+                    <div className="h-8 mb-4 bg-[#142535] bg-opacity-10 rounded relative overflow-hidden">
                       <div className="h-full absolute left-0 top-0 rounded bg-gradient-to-r from-[#F4D35E] to-[#f7e082] flex items-center px-4 text-[#081c30] font-bold w-[35%]">÷ Division (35%)</div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Recent Games */}
-            <div className="mt-5">
-              <h3 className="text-xl mb-4 text-[#f8e8ba] border-b border-white border-opacity-10 pb-2">Recent Games</h3>
-              <div className="flex flex-col gap-2">
-                <div className="flex justify-between items-center bg-white bg-opacity-5 p-4 rounded-lg transition-all hover:bg-opacity-10 hover:translate-x-1">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#dc3545] to-[#ff6b7d] flex items-center justify-center font-bold text-white text-xl">K</div>
-                    <div>
-                      <h4 className="text-lg">vs. KalkulusKing</h4>
-                      <div className="text-sm text-[#f8e8ba] opacity-80">Today at 3:45 PM</div>
-                    </div>
-                  </div>
-                  <div className="bg-[#28a745] bg-opacity-20 text-[#28a745] px-3 py-1 rounded-full font-bold">Win (5-2)</div>
-                </div>
-                
-                <div className="flex justify-between items-center bg-white bg-opacity-5 p-4 rounded-lg transition-all hover:bg-opacity-10 hover:translate-x-1">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#dc3545] to-[#ff6b7d] flex items-center justify-center font-bold text-white text-xl">L</div>
-                    <div>
-                      <h4 className="text-lg">vs. LogicLord</h4>
-                      <div className="text-sm text-[#f8e8ba] opacity-80">Yesterday at 7:32 PM</div>
-                    </div>
-                  </div>
-                  <div className="bg-[#28a745] bg-opacity-20 text-[#28a745] px-3 py-1 rounded-full font-bold">Win (4-3)</div>
-                </div>
-                
-                <div className="flex justify-between items-center bg-white bg-opacity-5 p-4 rounded-lg transition-all hover:bg-opacity-10 hover:translate-x-1">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#dc3545] to-[#ff6b7d] flex items-center justify-center font-bold text-white text-xl">G</div>
-                    <div>
-                      <h4 className="text-lg">vs. GeoGenius</h4>
-                      <div className="text-sm text-[#f8e8ba] opacity-80">2 days ago at 10:15 AM</div>
-                    </div>
-                  </div>
-                  <div className="bg-[#dc3545] bg-opacity-20 text-[#dc3545] px-3 py-1 rounded-full font-bold">Loss (2-5)</div>
-                </div>
-                
-                <div className="flex justify-between items-center bg-white bg-opacity-5 p-4 rounded-lg transition-all hover:bg-opacity-10 hover:translate-x-1">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#dc3545] to-[#ff6b7d] flex items-center justify-center font-bold text-white text-xl">T</div>
-                    <div>
-                      <h4 className="text-lg">vs. TrigMaster</h4>
-                      <div className="text-sm text-[#f8e8ba] opacity-80">3 days ago at 8:45 PM</div>
-                    </div>
-                  </div>
-                  <div className="bg-[#28a745] bg-opacity-20 text-[#28a745] px-3 py-1 rounded-full font-bold">Win (6-1)</div>
-                </div>
-              </div>
-            </div>
+            </div>      
           </div>
           
-          {/* Sidebar Card */}
-          <div className="lg:order-none order-first bg-[#081c30] bg-opacity-70 border border-white border-opacity-10 rounded-2xl p-6 lg:sticky lg:top-24 lg:max-w-xs w-full flex flex-col gap-5 shadow-xl backdrop-blur-md">
-            <div className="flex flex-col items-center gap-2">
-              <div className="text-lg text-[#f8e8ba] text-center">Current Rank</div>
-              <div className="w-20 h-20 bg-gradient-to-br from-[#EE964B] to-[#F95738] rounded-full flex items-center justify-center text-3xl font-bold shadow-lg text-white">12</div>
-              <div className="text-lg font-bold">Grandmaster</div>
-              <div className="text-sm text-[#f8e8ba] opacity-90 text-center">Top 2% of players</div>
-              <div className="w-full mt-4">
-                <div className="h-2 bg-white bg-opacity-10 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#EE964B] to-[#F95738] rounded-full w-[85%] transition-all duration-500"></div>
-                </div>
-                <div className="flex justify-between text-sm mt-1 text-[#f8e8ba] opacity-80">
-                  <span>XP to next rank:</span>
-                  <span>850/1000</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="text-lg text-[#f8e8ba] text-center">Recent Achievements</div>
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-2 bg-white bg-opacity-5 p-2 rounded-lg hover:bg-opacity-10 transition-all items-center">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F4D35E] to-[#EE964B] flex items-center justify-center font-bold text-white text-xl flex-shrink-0">🥇</div>
-                <div>
-                  <div className="text-sm font-bold">Perfect Streak</div>
-                  <div className="text-xs text-[#f8e8ba] opacity-80">Win 10 games in a row</div>
-                </div>
-              </div>
-              <div className="flex gap-2 bg-white bg-opacity-5 p-2 rounded-lg hover:bg-opacity-10 transition-all items-center">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F4D35E] to-[#EE964B] flex items-center justify-center font-bold text-white text-xl flex-shrink-0">⚡</div>
-                <div>
-                  <div className="text-sm font-bold">Speed Demon</div>
-                  <div className="text-xs text-[#f8e8ba] opacity-80">Solve 5 games under 20s</div>
-                </div>
-              </div>
-              <div className="flex gap-2 bg-white bg-opacity-5 p-2 rounded-lg hover:bg-opacity-10 transition-all items-center">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F4D35E] to-[#EE964B] flex items-center justify-center font-bold text-white text-xl flex-shrink-0">🎯</div>
-                <div>
-                  <div className="text-sm font-bold">Accuracy Master</div>
-                  <div className="text-xs text-[#f8e8ba] opacity-80">95%+ accuracy in 50 games</div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </main>
       
