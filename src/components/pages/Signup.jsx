@@ -3,6 +3,23 @@ import { usefirebase } from "../../context/firebase";
 import { useNavigate } from "react-router-dom";
 import Footer from "../ui/Footer"; 
 
+
+const getInitialRating = (level) => {
+  switch (level) {
+    case "beginner":
+      return 800;
+    case "intermediate":
+      return 1200;
+    case "advanced":
+      return 1600;
+    case "expert":
+      return 2000;
+    default:
+      return 1000;
+  }
+};
+
+
 const Signup = () => {
   const firebase = usefirebase();
   const [email, setEmail] = useState("");
@@ -13,16 +30,11 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  const getInitialRating = (level) => {
-    switch (level) {
-      case "beginner": return 800;
-      case "intermediate": return 1200;
-      case "advanced": return 1600;
-      case "expert": return 2000;
-      default: return 1000;
-    }
-  };
+  const rating = getInitialRating(mathLevel);
+  const noofmatches = 0;
+  const wins = 0;
+  const avgTime = "0s";
+  const levelOfPlay = mathLevel.charAt(0).toUpperCase() + mathLevel.slice(1);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +42,7 @@ const Signup = () => {
       alert("Password must be at least 6 characters long");
       return;
     }
-    if ((password !== confirmPassword)) {
+    if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
@@ -58,7 +70,12 @@ const Signup = () => {
           firstName,
           lastName,
           mathLevel,
-          rating: getInitialRating(mathLevel),
+          rating,
+          initialRating: rating,
+          levelOfPlay,
+          noofmatches,
+          wins,
+          avgTime,
           createdAt: new Date().toISOString(),
         });
         setLoading(false);

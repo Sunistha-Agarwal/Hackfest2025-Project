@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { initializeApp } from "firebase/app";
-import { getDatabase, set, ref, get, child } from "firebase/database";
+import { getDatabase, set, ref, get, child, update } from "firebase/database";
 import { useEffect, useState } from "react";
 import {
   getAuth,
@@ -9,7 +9,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut
+  signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -32,7 +32,7 @@ export const usefirebase = () => useContext(FireBaseContext);
 
 export const FirebaseProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
       setCurrentUser(user);
@@ -86,24 +86,28 @@ export const FirebaseProvider = (props) => {
     try {
       const result = await signInWithPopup(firebaseAuth, provider);
       const user = result.user;
-      
+
       // Check if user already exists before setting data
       const userRef = ref(database, "users/" + user.uid);
       const snapshot = await get(userRef);
-      
+
       if (!snapshot.exists()) {
         // Only set initial data if user doesn't exist
         await set(userRef, {
           email: user.email,
-          firstName: user.displayName?.split(' ')[0] || '',
-          lastName: user.displayName?.split(' ').slice(1).join(' ') || '',
+          firstName: user.displayName?.split(" ")[0] || "",
+          lastName: user.displayName?.split(" ").slice(1).join(" ") || "",
           profilePicture: user.photoURL,
           levelOfPlay: "Beginner",
           rating: 1200,
+          initialRating: 1200,
+          noofmatches:15,
+          wins: 10,
+          avgTime: "45s",
           createdAt: new Date().toISOString(),
         });
       }
-  
+
       return user;
     } catch (error) {
       console.error("Google sign-in error:", error);
@@ -128,15 +132,15 @@ export const FirebaseProvider = (props) => {
 
       if (snapshot.exists()) {
         const data = snapshot.val();
-        
+
         const playerArray = Object.values(data)
-          .filter(player => player.rating !== undefined)
+          .filter((player) => player.rating !== undefined)
           .sort((a, b) => b.rating - a.rating)
           .map((player, index) => ({
             ...player,
-            rank: index + 1
+            rank: index + 1,
           }));
-          
+
         return playerArray;
       } else {
         console.warn("No user data available");
@@ -151,26 +155,26 @@ export const FirebaseProvider = (props) => {
     try {
       const userRef = ref(database, `users/${uid}`);
       const snapshot = await get(userRef);
-  
+
       if (snapshot.exists()) {
         const userData = snapshot.val();
         let newRating = (userData.rating || 1200) + 50;
         let initialRating = userData.initialRating || userData.rating || 1200;
-  
+
         // Calculate level up
         const ratingDifference = newRating - initialRating;
         let newLevel = userData.levelOfPlay;
-  
+
         if (ratingDifference >= 400) {
           switch (userData.levelOfPlay) {
-            case 'Beginner':
-              newLevel = 'Intermediate';
+            case "Beginner":
+              newLevel = "Intermediate";
               break;
-            case 'Intermediate':
-              newLevel = 'Advanced';
+            case "Intermediate":
+              newLevel = "Advanced";
               break;
-            case 'Advanced':
-              newLevel = 'Pro';
+            case "Advanced":
+              newLevel = "Pro";
               break;
             default:
               newLevel = userData.levelOfPlay;
@@ -178,14 +182,14 @@ export const FirebaseProvider = (props) => {
           // Reset the base rating after level-up
           initialRating = newRating;
         }
-  
-        await set(userRef, {
+
+        await update(userRef, {
           ...userData,
           rating: newRating,
           levelOfPlay: newLevel,
           initialRating,
         });
-  
+
         return { newRating, newLevel };
       }
     } catch (error) {
@@ -193,23 +197,22 @@ export const FirebaseProvider = (props) => {
       throw error;
     }
   };
-  
 
   return (
     <FireBaseContext.Provider
-  value={{
-    createUser,
-    loginUser,
-    logoutUser,
-    setData,
-    currentUser,
-    signInWithGoogle,
-    getLeaderboardData,
-    database,
-    getCurrentUser: () => firebaseAuth.currentUser,
-    updateUserRatingAndLevel
-  }}
->
+      value={{
+        createUser,
+        loginUser,
+        logoutUser,
+        setData,
+        currentUser,
+        signInWithGoogle,
+        getLeaderboardData,
+        database,
+        getCurrentUser: () => firebaseAuth.currentUser,
+        updateUserRatingAndLevel,
+      }}
+    >
       {props.children}
     </FireBaseContext.Provider>
   );

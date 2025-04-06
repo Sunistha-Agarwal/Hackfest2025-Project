@@ -3,23 +3,24 @@ import Navbar from '../ui/Navbar';
 import Footer from '../ui/Footer';
 import { usefirebase } from '../../context/firebase';
 import { ref, onValue, off } from 'firebase/database';
-import { getAuth } from 'firebase/auth';
 
 const Leaderboard = () => {
-  const { database } = usefirebase();
+  const { database, currentUser, updateUserRatingAndLevel } = usefirebase();
   const [players, setPlayers] = useState([]);
-  const [currentUserUID, setCurrentUserUID] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUserUID(user?.uid || null);
-    });
+  const currentUserUID = currentUser?.uid;
 
-    return () => unsubscribe();
-  }, []);
+  const handleWin = async () => {
+    if (!currentUserUID) return;
+    try {
+      const result = await updateUserRatingAndLevel(currentUserUID);
+      alert(`Rating updated! New rating: ${result.newRating}, Level: ${result.newLevel}`);
+    } catch (error) {
+      console.error("Failed to update rating:", error);
+    }
+  };
 
   useEffect(() => {
     if (!database) {
@@ -45,7 +46,7 @@ const Leaderboard = () => {
               rank: index + 1,
               name: `${player.firstName || ''} ${player.lastName || ''}`.trim() || 'Anonymous Player',
               avatar: getPlayerAvatar(player),
-              score: player.rating || 0
+              score: player.rating || 0,
             }));
 
           const top50 = allPlayers.slice(0, 50);
@@ -189,7 +190,7 @@ const Leaderboard = () => {
           )}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
