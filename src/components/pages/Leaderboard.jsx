@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../ui/Navbar';
+import Footer from '../ui/Footer';
 import { usefirebase } from '../../context/firebase';
 import { ref, onValue, off } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
@@ -188,6 +189,7 @@ const Leaderboard = () => {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

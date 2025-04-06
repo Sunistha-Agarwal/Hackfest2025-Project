@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../ui/Navbar";
+import Footer from "../ui/Footer";
 import { useNavigate } from "react-router";
 import { usefirebase } from "../../context/firebase";
 
@@ -59,7 +59,45 @@ export default function Signin() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#05111d] text-white">
-      <Navbar />
+      <nav className="flex justify-between items-center p-5 bg-[#05111d]/95 sticky top-0 z-10 shadow-lg backdrop-blur-md flex-col md:flex-row gap-5 md:gap-0">
+        <a
+          href="/"
+          className="bg-gradient-to-br from-[#EE964B] to-[#F95738] w-12 h-12 rounded-full flex justify-center items-center font-bold text-lg shadow-md shadow-[#F95738]/50 text-white no-underline"
+        >
+          HC
+        </a>
+        <ul className="flex list-none w-full md:w-auto justify-between md:justify-start">
+          <li className="md:mx-5">
+            <a
+              href="/"
+              className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
+            >
+              Home
+            </a>
+          </li>
+          <li className="md:mx-5">
+            <a
+              href="#"
+              className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
+            >
+              Leaderboard
+            </a>
+          </li>
+          <li className="md:mx-5">
+            <a
+              href="#"
+              className="text-white no-underline font-medium transition-all duration-300 text-base py-2.5 relative hover:text-[#F95738] hover:shadow-text"
+            >
+              About
+            </a>
+          </li>
+        </ul>
+        <button
+          className="bg-gradient-to-br from-[#EE964B] to-[#F95738] text-white border-none py-3 px-7 rounded-md font-bold cursor-pointer transition-all duration-300 text-base tracking-wider shadow-md shadow-[#F95738]/30 no-underline hover:translate-y-[-3px] hover:scale-105 hover:shadow-lg hover:shadow-[#F95738]/50"
+          >
+          Sign In
+        </button>
+      </nav>
 
       {/* Main Content */}
       <main className="flex-1 flex justify-center items-center p-4 md:p-12 relative z-1 max-h-screen">
@@ -174,25 +212,7 @@ export default function Signin() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-8 px-4 md:px-12 bg-[#05111d] text-center border-t border-[#081c30] border-opacity-5">
-        <div className="flex flex-col gap-5 max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-5">
-            {footerLinks.map((item) => (
-              <a
-                key={item}
-                href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                className="text-white text-opacity-70 no-underline hover:text-red-500 transition-colors duration-300"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-          <p className="text-white text-opacity-50 text-sm">
-            © 2025 HectoClash - Elevating Mathematical Excellence Worldwide
-          </p>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 }
